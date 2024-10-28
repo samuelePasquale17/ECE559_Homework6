@@ -5,6 +5,8 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 
 
+torch.manual_seed(0)
+
 ################################################################################################
 ########################                     Dataset                    ########################
 ################################################################################################
@@ -66,8 +68,10 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),  # ReLU activation function
             nn.Linear(200, 200),  # Fully connected layer from 200 neurons to 200 neurons
             nn.ReLU(),  # ReLU activation function
-            nn.Linear(200, 10)  # Fully connected layer from 200 neurons to 10 output classes
+            nn.Linear(200, 10),  # Fully connected layer from 200 neurons to 10 output classes
+            nn.ReLU()  # ReLU activation function
         )
+
 
     def forward(self, x):
         x = self.flatten(x)  # Flatten the input image
